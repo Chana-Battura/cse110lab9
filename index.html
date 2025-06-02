@@ -51,6 +51,7 @@
 
 <body>
   <main>
+    <!-- <p id="description">The Basic Error Calculator Demo</p> -->
     <form>
       <fieldset>
         <legend>Error Calculator</legend>
@@ -86,7 +87,7 @@
       <button>Trigger a Global Error</button>
     </section>
   </main>
-
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
@@ -102,6 +103,72 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    
+    window.TrackJS && TrackJS.install({
+        token: "10eeb0c8df76448faf1f03bb5a3412ef",
+        application: "lab9"
+    });
+    //Buttons Section
+    errorBtns[0].addEventListener("click", function() {
+      console.log("Console Log Demo");
+    });
+    errorBtns[1].addEventListener("click", function() {
+      console.error("Console Error Demo");
+    });
+    errorBtns[2].addEventListener("click", function() {
+      console.count("Count Demo");
+    });
+    errorBtns[3].addEventListener("click", function() {
+      console.warn("Console Warn Demo");
+    });
+    errorBtns[4].addEventListener("click", function() {
+      console.assert(1==2, "Console Assert Demo");
+    });
+    errorBtns[5].addEventListener("click", function() {
+      console.clear();
+    });
+    errorBtns[6].addEventListener("click", function() {
+      console.dir(errorBtns[6]);
+    });
+    errorBtns[7].addEventListener("click", function() {
+      console.dirxml(errorBtns[7]);
+    });
+    errorBtns[8].addEventListener("click", function() {
+      console.group();
+    });
+    errorBtns[9].addEventListener("click", function() {
+      console.groupEnd();
+    });
+    errorBtns[10].addEventListener("click", function() {
+      console.table(["Revelle", "Muir", "Marshall", "Warren", "Roosevelt", "Sixth", "Seventh", "Eighth"]);
+    });
+    errorBtns[11].addEventListener("click", function() {
+      console.time("Console Timer Demo");
+    });
+    errorBtns[12].addEventListener("click", function() {
+      console.timeEnd("Console Timer Demo");
+    });
+    errorBtns[13].addEventListener("click", function() {
+      function deep() {
+        function deeper() {
+          function deepest () {
+            console.trace();
+          }
+          deepest();
+        }
+        deeper();
+      }
+      deep();
+    });
+    errorBtns[14].addEventListener("click", function() {
+      const fake = document.getElementById("NOTHING").textContent;
+    });
+    
+    window.onerror = function(){
+      console.log("AN ERROR HAS OCCURED!");    
+    }
+
+
   </script>
 </body>
 
