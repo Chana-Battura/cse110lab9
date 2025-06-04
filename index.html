@@ -96,6 +96,9 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
+      if (isNaN(firstNum) || isNaN(secondNum)) {
+        throw new StringConcatError(firstNum, secondNum);
+      }
       output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
     });
 
@@ -161,14 +164,27 @@
       deep();
     });
     errorBtns[14].addEventListener("click", function() {
-      const fake = document.getElementById("NOTHING").textContent;
+      throw new Error("GLOBAL ERROR!");
     });
     
+    try {
+      const fake = document.getElementById("NOTHING").textContent;
+    } catch (error) {
+      console.log("Caught the following error", error);
+    } finally {
+      console.log("Got through this error!");
+    }
+
     window.onerror = function(){
       console.log("AN ERROR HAS OCCURED!");    
     }
 
-
+    class StringConcatError extends Error {
+      constructor() {
+        super("We are adding numbers not strings!");
+        this.name = "StringConcatError";
+      }
+    }
   </script>
 </body>
 
